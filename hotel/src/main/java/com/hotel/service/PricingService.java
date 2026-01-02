@@ -10,6 +10,7 @@ public class PricingService {
     }
 
     public double calculate(int nights) {
+        if (nights < 0) throw new IllegalArgumentException("nights");
         return strategy.calculatePrice(nights);
     }
 }
