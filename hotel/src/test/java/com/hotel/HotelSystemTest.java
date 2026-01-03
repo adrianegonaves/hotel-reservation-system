@@ -252,7 +252,7 @@ public class HotelSystemTest {
     }
 
     // ==========================================
-    // 8. TESTES DE BORDAS E EXCEÇÕES EXTRA
+    // 8. TESTES DE EXTREMOS E EXCEÇÕES EXTRA
     // ==========================================
 
     @Test
