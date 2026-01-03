@@ -1,5 +1,8 @@
 package com.hotel.model;
 
 public enum RoomStatus {
-    AVAILABLE, OCCUPIED, CLEANING, MAINTENANCE
+    AVAILABLE,
+    OCCUPIED,
+    CLEANING,
+    MAINTENANCE
 }

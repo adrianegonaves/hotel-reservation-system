@@ -4,6 +4,7 @@ import com.hotel.model.*;
 import com.hotel.service.*;
 import com.hotel.strategy.*;
 import com.hotel.factory.*;
+import com.hotel.observer.RoomObserver;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -337,5 +338,42 @@ public class HotelSystemTest {
     void TC39_pricingServiceNegativeNightsThrows() {
         PricingService ps = new PricingService(new StandardPricingStrategy());
         assertThrows(IllegalArgumentException.class, () -> ps.calculate(-1));
+    }
+
+    @Test
+    void TC40_observerNotificationCleaning() {
+        Room room = new Room(404);
+        final boolean[] wasNotified = {false};
+        RoomObserver testObserver = r -> {
+            if (r.getStatus() == RoomStatus.CLEANING) {
+                wasNotified[0] = true;
+            }
+        };
+        
+        room.addObserver(testObserver);
+        room.occupy(); 
+        room.free();   
+        
+        assertTrue(wasNotified[0], "O observador deveria ter sido notificado da mudança para CLEANING");
+    }
+
+    @Test
+    void TC41_maintenanceStatusFlow() {
+        Room room = new Room(505);
+        room.setUnderMaintenance();
+        
+        assertEquals(RoomStatus.MAINTENANCE, room.getStatus());
+        assertFalse(room.isAvailable());
+    }
+
+    @Test
+    void TC42_maintenanceServiceIntegration() {
+        Room room = new Room(606);
+        MaintenanceService maintenanceService = new MaintenanceService();
+        room.addObserver(maintenanceService);
+        
+   
+        room.setUnderMaintenance();
+        assertEquals(RoomStatus.MAINTENANCE, room.getStatus());
     }
 }
