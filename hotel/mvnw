@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+# ----------------------------------------------------------------------------
+# Maven Wrapper
+# ----------------------------------------------------------------------------
+MAVEN_PROJECTBASEDIR="$(cd "$(dirname "$0")" && pwd)"
+
+if [ -n "$JAVA_HOME" ]; then
+    _java="$JAVA_HOME/bin/java"
+else
+    _java="$(command -v java 2>/dev/null)"
+fi
+
+if [ -z "$_java" ]; then
+    echo "Error: JAVA_HOME is not set and 'java' could not be found in PATH." 1>&2
+    exit 1
+fi
+
+exec "$_java" -jar "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" "$@"
