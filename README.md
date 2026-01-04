@@ -40,13 +40,8 @@ A lógica de negócio está encapsulada em serviços dedicados:
 * Maven instalado.
 
 ### Passos
-1.  *Clonar o repositório:*
-    bash
-    git clone [https://github.com/adrianegonaves/hotel-reservation-system.git](https://github.com/adrianegonaves/hotel-reservation-system.git)
-    cd hotel-reservation-system/hotel
-    
 
-2.  *Compilar o projeto:*
+1.  *Compilar o projeto:*
     bash
     mvn clean install
     
@@ -57,7 +52,7 @@ A lógica de negócio está encapsulada em serviços dedicados:
     mvn exec:java -Dexec.mainClass="com.hotel.Main"
     
 
-## 🧪 Como Executar os Testes
+## Como Executar os Testes
 
 O projeto inclui testes unitários configurados com JUnit 5. Para executar os testes e gerar o relatório de cobertura:
 
